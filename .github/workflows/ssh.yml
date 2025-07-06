@@ -1,0 +1,13 @@
+name: SSH VPS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ssh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: valeriangalliat/action-sshd-cloudflared@v4
+        env:
+          AUTHORIZED_KEYS: ${{ secrets.SSH_KEY }}
